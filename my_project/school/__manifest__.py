@@ -22,7 +22,7 @@
         'security/ir.model.access.csv',
         'views/student_plus_view.xml',
         'security/student_right.xml',
-        # 'views/button_send.xml',
+        'views/lang_views.xml',
         'views/test_email.xml',
     ],
 

@@ -29,6 +29,10 @@
                                 <field name="nationality"/>
                                 <field name="photo"/>
                             </group>
+                            <group>
+                                <field name="x"/>
+                                <field name="job_id" widget="many2many_checkboxes"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>
@@ -45,6 +49,7 @@
                     <field name="student_dob"/>
                     <field name="student_blood_group"/>
                     <field name="photo"/>
+                    <field name="job_id"/>
                 </tree>
 
             </field>

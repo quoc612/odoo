@@ -6,6 +6,13 @@ from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
 
 
+class StudentLanguage(models.Model):
+    _name = 'student.student.lang'
+    name_of_lang = fields.Char(string="Name of language")
+    flag = fields.Char(string="Flag")
+    language_ref = fields.Many2one(comodel_name='student.student', string="Language ID")
+
+
 class StudentStudent(models.Model):
     _name = 'student.student'
     _inherit = ['mail.thread']
@@ -27,6 +34,8 @@ class StudentStudent(models.Model):
     nationality = fields.Many2one('res.country', string='Nationality')
     company_id = fields.Many2one('res.company', string='Company')
     partner_id = fields.Many2one('res.partner', string='Partner')
+    x = fields.One2many(comodel_name='student.student.lang', inverse_name='language_ref', string='Language')
+    job_id = fields.Many2many('hr.job', string='Job ID')
 
     @api.onchange('student_dob')  # thay đổi thuộc tính của student_dob
     def calculateAge(self):
@@ -81,3 +90,5 @@ class StudentStudent(models.Model):
 
         # Send out the e-mail template to the user
         self.env['mail.template'].browse(template.id).send_mail(self.id)
+
+# tạo bảng ngôn ngữ
