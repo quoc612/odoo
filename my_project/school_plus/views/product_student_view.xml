@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="product_student_form_view" model="ir.ui.view">
+            <field name="name">school.form.view</field>
+            <field name="model">product.student</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <field name="employee_id" placeholder="Nguyen Van A"/>
+                        </div>
+                        <group name="images">
+                            <group>
+                                <field name="age"/>
+                                <field name="student_dob"/>
+                                <field name="gender"/>
+                                <!--                                <field name="toy"/>-->
+                                <field name="student_type"/>
+                                <field name="color"/>
+                                <field name="bonus_point"/>
+                                <field name="bonus_point"/>
+                            </group>
+                            <group>
+                                <field name="student_blood_group"/>
+                                <field name="nationality"/>
+                                <field name="photo"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="product_student_tree_view" model="ir.ui.view">
+            <field name="name">school.tree.view</field>
+            <field name="model">product.student</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!--                    <field name="name"/>-->
+                    <field name="age"/>
+                    <field name="gender"/>
+                    <field name="student_dob"/>
+                    <field name="student_blood_group"/>
+                    <field name="student_type"/>
+                    <field name="color"/>
+                    <field name="bonus_point"/>
+                    <field name="bonus_point"/>
+                    <!--                    <field name="toy"/>-->
+                    <field name="photo"/>
+                </tree>
+
+            </field>
+
+        </record>
+        <record id="action_product_student" model="ir.actions.act_window">
+            <field name="name">Product Student</field>
+            <field name="res_model">product.student</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('product_student_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('product_student_form_view')})]"/>
+
+        </record>
+        <menuitem id="product_student_menu" name="Product Student" action="action_product_student"/>
+    </data>
+</odoo>
