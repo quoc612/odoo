@@ -33,7 +33,6 @@
 
         <record id="action_school_lang" model="ir.actions.act_window">
             <field name="name">School Language</field>
-            <!--            <field name="type">ir.actions.act_window</field>-->
             <field name="res_model">student.student.lang</field>
             <field name="view_ids" eval="[(5, 0, 0),
                 (0, 0, {'view_mode': 'tree', 'view_id': ref('school_student_tree_view')}),
