@@ -23,7 +23,6 @@ class MyContract(models.Model):
     @api.multi
     def btn_waiting_approval(self):
         if self.state == "draft":
-            # perform some action
             self.write({'state': 'open'})
         elif self.state == "cancel":
             self.write({'state': 'draft'})

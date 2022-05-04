@@ -2,24 +2,25 @@
 
     'name': 'My Contract',
 
-    'version': '1234',
+    'version': 'version_new',
 
-    'summary': 'My Odoo',
+    'summary': 'My Contract',
 
     'category': 'Tools',
 
-    'author': 'Niyas Raphy',
+    'author': 'quocnv',
 
-    'maintainer': 'My Odoo',
+    'maintainer': 'My Contract',
 
-    'company': 'My Odoo',
+    'company': 'My Contract',
 
-    'website': 'https://www.cybrosys.com',
+    'website': 'vti.com.vn',
 
     'depends': ['base', 'mail', 'hr_contract'],
 
     'data': [
         'security/ir.model.access.csv',
+        'security/security_view.xml',
         'views/my_contract.xml',
 
     ],

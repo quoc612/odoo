@@ -9,7 +9,7 @@
                     <header>
                         <button name="random" string="Random" type="object" class="oe_highlight"/>
                         <button name="action_send_email" string="Send by email" type="object"/>
-                        # hàm name để gọi function
+<!--                        # hàm name để gọi function-->
                     </header>
                     <sheet>
                         <div class="oe_title">
