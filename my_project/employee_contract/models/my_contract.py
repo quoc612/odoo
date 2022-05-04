@@ -1,6 +1,8 @@
 from odoo import fields, api, models
 from datetime import date
 
+from odoo.exceptions import ValidationError
+
 
 class MyContract(models.Model):
     _inherit = 'hr.contract'
@@ -36,4 +38,6 @@ class MyContract(models.Model):
 
     @api.multi
     def send_mail(self):
-        print("Send mail")
+        mail_template = self.env.ref('employee_contract.email_template_contract')
+        mail_template.send_mail(self.id, force_send=True)
+        # raise ValidationError("mail")
