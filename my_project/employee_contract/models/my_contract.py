@@ -25,5 +25,12 @@ class MyContract(models.Model):
         if self.state == "draft":
             # perform some action
             self.write({'state': 'open'})
+        elif self.state == "cancel":
+            self.write({'state': 'draft'})
+
+    @api.multi
+    def btn_cancel_approval(self):
+        if self.state == "open":
+            self.write({'state': 'cancel'})
         else:
-            print("Not OK")
+            self.write({'state': 'draft'})

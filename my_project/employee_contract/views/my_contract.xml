@@ -2,17 +2,17 @@
 <!--viết xml con kế thừa từ xml cha-->
 <odoo>
     <data>
-<!--        <record id="my_contract_hr_employee_view" model="ir.ui.view">-->
-<!--            <field name="name">my.contract.hr.contract.form.view</field>-->
-<!--            <field name="model">hr.contract</field>-->
-<!--            <field name="inherit_id" ref="hr_contract.hr_contract_form_view">-->
-<!--                <field name="arch" type="xml">-->
-<!--                    &lt;!&ndash;                    <xpath expr="//header" position="inside">&ndash;&gt;-->
-<!--                    &lt;!&ndash;                        <button name="btn_waiting_approval" string="Submit" type="object" class="oe_highlight"/>&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    </xpath>&ndash;&gt;-->
-<!--                </field>-->
-<!--            </field>-->
-<!--        </record>-->
+        <!--        <record id="my_contract_hr_employee_view" model="ir.ui.view">-->
+        <!--            <field name="name">my.contract.hr.contract.form.view</field>-->
+        <!--            <field name="model">hr.contract</field>-->
+        <!--            <field name="inherit_id" ref="hr_contract.hr_contract_form_view">-->
+        <!--                <field name="arch" type="xml">-->
+        <!--                    &lt;!&ndash;                    <xpath expr="//header" position="inside">&ndash;&gt;-->
+        <!--                    &lt;!&ndash;                        <button name="btn_waiting_approval" string="Submit" type="object" class="oe_highlight"/>&ndash;&gt;-->
+        <!--                    &lt;!&ndash;                    </xpath>&ndash;&gt;-->
+        <!--                </field>-->
+        <!--            </field>-->
+        <!--        </record>-->
 
 
         <record id="my_contract_hr_employee_view" model="ir.ui.view">
@@ -20,9 +20,12 @@
             <field name="model">hr.contract</field>
             <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
             <field name="arch" type="xml">
-                    <xpath expr="//header" position="inside">
-                        <button name="btn_waiting_approval" string="Submit" type="object" class="oe_highlight"/>
-                    </xpath>
+                <xpath expr="//header" position="inside">
+                    <button name="btn_waiting_approval" string="Approve" type="object" class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//header" position="inside">
+                    <button name="btn_cancel_approval" string="Refuse" type="object" class="oe_highlight"/>
+                </xpath>
             </field>
         </record>
         <!--        <record id="contract_form_view" model="ir.ui.view">-->
