@@ -33,3 +33,7 @@ class MyContract(models.Model):
             self.write({'state': 'cancel'})
         else:
             self.write({'state': 'draft'})
+
+    @api.multi
+    def send_mail(self):
+        print("Send mail")

@@ -25,7 +25,7 @@
             <field name="perm_write" eval="0"/>
             <field name="perm_unlink" eval="0"/>
             <field name="perm_create" eval="0"/>
-            <field name="domain_force">[]</field>
+            <field name="domain_force">[('employee_id.user_id','=', user.id)]</field>
         </record>
 
         <record id="rule_admin_id" model="ir.rule">
