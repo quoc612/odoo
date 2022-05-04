@@ -1,6 +1,6 @@
 {
 
-    'name': 'My Odoo',
+    'name': 'My Contract',
 
     'version': '1234',
 
@@ -16,14 +16,12 @@
 
     'website': 'https://www.cybrosys.com',
 
-    'depends': ['base', 'mail'],
+    'depends': ['base', 'mail', 'hr_contract'],
 
     'data': [
         'security/ir.model.access.csv',
-        'views/student_plus_view.xml',
-        'security/student_right.xml',
-        'views/lang_views.xml',
-        'views/test_email.xml',
+        'views/my_contract.xml',
+
     ],
 
     'images': [],
