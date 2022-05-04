@@ -31,6 +31,7 @@
                 </xpath>
             </field>
         </record>
+
         <!--        <record id="contract_form_view" model="ir.ui.view">-->
         <!--            <field name="name">contract.form.view</field>-->
         <!--            <field name="model">my.contract</field>-->

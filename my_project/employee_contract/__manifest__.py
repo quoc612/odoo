@@ -22,6 +22,9 @@
         'security/ir.model.access.csv',
         'security/security_view.xml',
         'views/my_contract.xml',
+        'data/email_template.xml',
+        # 'views/send.xml',
+        # 'views/send_mail.xml',
 
     ],
 
