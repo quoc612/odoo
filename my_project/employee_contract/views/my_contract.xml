@@ -21,16 +21,37 @@
             <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//header" position="inside">
-                    <button name="btn_waiting_approval" string="Approve" type="object" class="oe_highlight"/>
+                    <button name="btn_waiting_approval" string="Approve" type="object" class="oe_highlight"
+                            attrs="{'invisible':['|',('state','=','open'), ('state','=','cancel')]}"/>
                 </xpath>
                 <xpath expr="//header" position="inside">
                     <button name="btn_cancel_approval" string="Refuse" type="object" class="oe_highlight"/>
                 </xpath>
-                <xpath expr="//header" position="inside">
-                    <button name="send_mail" string="Send mail" type="object" class="oe_highlight"/>
-                </xpath>
+                <!--                <xpath expr="//header" position="inside">-->
+                <!--                    <button name="send_mail" string="Send mail" type="object" class="oe_highlight"/>-->
+                <!--                </xpath>-->
             </field>
         </record>
+        <record id="hr_contract_view_search" model="ir.ui.view">
+            <field name="name">hr.contract.search</field>
+            <field name="model">hr.contract</field>
+            <field eval="10" name="priority"/>
+            <field name="arch" type="xml">
+                <search string="My Contract String">
+                    <group expand='0' string="Filters">
+                        <filter name='name' string="Name"/>
+                        <filter name='employee_id' string="Employee ID"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        <record model="ir.ui.menu" id="hr_contract.hr_menu_contract">
+            <field name="groups_id"
+                   eval="[(6,0,[ref('hr_contract.group_hr_contract_manager'), ref('employee_contract.group_contract_id')])]"/>
+        </record>
+        <!--        <menuitem name="Menu Contract"-->
+        <!--                  id="hr_menu_contract_new" parent="hr_menu_contract"-->
+        <!--        />-->
 
         <!--        <record id="contract_form_view" model="ir.ui.view">-->
         <!--            <field name="name">contract.form.view</field>-->

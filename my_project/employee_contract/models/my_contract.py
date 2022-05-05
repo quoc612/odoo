@@ -26,6 +26,12 @@ class MyContract(models.Model):
     def btn_waiting_approval(self):
         if self.state == "draft":
             self.write({'state': 'open'})
+            mail_template = self.env.ref('employee_contract.email_template_contract')
+            mail_template.send_mail(self.id, force_send=True)
+            return {
+                'name': 'Success'
+
+            }
         elif self.state == "cancel":
             self.write({'state': 'draft'})
 
@@ -36,8 +42,4 @@ class MyContract(models.Model):
         else:
             self.write({'state': 'draft'})
 
-    @api.multi
-    def send_mail(self):
-        mail_template = self.env.ref('employee_contract.email_template_contract')
-        mail_template.send_mail(self.id, force_send=True)
-        # raise ValidationError("mail")
+
