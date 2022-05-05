@@ -32,17 +32,55 @@
                 <!--                </xpath>-->
             </field>
         </record>
-        <record id="hr_contract_view_search" model="ir.ui.view">
+        <record id="hr_contract_search" model="ir.ui.view">
             <field name="name">hr.contract.search</field>
             <field name="model">hr.contract</field>
-            <field eval="10" name="priority"/>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_search"/>
+            <!--hr.contract.search-->
             <field name="arch" type="xml">
-                <search string="My Contract String">
-                    <group expand='0' string="Filters">
-                        <filter name='name' string="Name"/>
-                        <filter name='employee_id' string="Employee ID"/>
-                    </group>
-                </search>
+                <group expand='0' string="Filters">
+                    <xpath expr="//field[@name='name']" position="after"/>
+                    <field name="name"/>
+                </group>
+
+                <!--                <xpath expr="//hr_contract_view_search" position="after">-->
+                <!--                    &lt;!&ndash;                    xpath phụ thuộc vào thẻ cha và id của thẻ cha khi kế thừa&ndash;&gt;-->
+                <!--                    <field name="name" string="Name"/>-->
+                <!--                    <field name="employee_id" string="Employee ID"/>-->
+                <!--                    <field name="job_id" string="Job ID"/>-->
+                <!--                </xpath>-->
+                <!--                <search string="Search Contract">-->
+                <!--                    <field name="name" string="Contracts"/>-->
+                <!--                    <field name="date_start"/>-->
+                <!--                    <field name="date_end"/>-->
+                <!--                    <field name="resource_calendar_id"/>-->
+                <!--                    <field name="employee_id"/>-->
+                <!--                    <field name="department_id"/>-->
+                <!--                    <field name="state"/>-->
+                <!--                    <filter string="To Renew" name="to_renew" domain="[('state', '=', 'pending')]"/>-->
+                <!--                    <separator />-->
+                <!--                    <filter string="Current Employee" name="current_employee" domain="[('employee_id.active','=',True)]"/>-->
+                <!--                    <separator/>-->
+                <!--                    <filter string="To Report to Social Secretariat" name="to_report" domain="[('reported_to_secretariat', '=', False)]"/>-->
+                <!--                    <separator/>-->
+                <!--                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>-->
+                <!--                    <separator/>-->
+                <!--                    <filter string="Important Messages" name="message_needaction" domain="[('message_needaction','=',True)]"/>-->
+                <!--                    <separator/>-->
+                <!--                    <filter string="Late Activities" name="activities_overdue"-->
+                <!--                        domain="[('activity_ids.date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"-->
+                <!--                        help="Show all records which have a next action date before today"/>-->
+                <!--                    <filter string="Today Activities" name="activities_today"-->
+                <!--                        domain="[('activity_ids.date_deadline', '=', context_today().strftime('%Y-%m-%d'))]"/>-->
+                <!--                    <filter string="Future Activities" name="activities_upcoming_all"-->
+                <!--                        domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]"/>-->
+                <!--                    <group expand="0" string="Group By">-->
+                <!--                        <filter string="Employee" name="employee" domain="[]" context="{'group_by':'employee_id'}"/>-->
+                <!--                        <filter string="Job" name="job" domain="[]" context="{'group_by':'job_id'}"/>-->
+                <!--                        <filter string="Contract Type" name="contract_type" domain="[]" context="{'group_by':'type_id'}"/>-->
+                <!--                        <filter string="State" name='group_by_state' domain="[]" context="{'group_by': 'state'}"/>-->
+                <!--                    </group>-->
+                <!--                </search>-->
             </field>
         </record>
         <record model="ir.ui.menu" id="hr_contract.hr_menu_contract">
