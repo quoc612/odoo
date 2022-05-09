@@ -37,16 +37,26 @@
             <field name="model">hr.contract</field>
             <field name="inherit_id" ref="hr_contract.hr_contract_view_search"/>
             <field name="arch" type="xml">
-                <search>
-                    <field name="resource_calendar_id"/>
-                    <group expand="0" string="Group By">
-                        <filter string="Working Schedule" name="resource_calendar_id"
-                                context="{'group_by': resource_calendar_id}"/>
-                    </group>
-                </search>
-<!--                <xpath expr="//field[@name='date_start'" position="after">-->
-<!--                    <field name="date_start" string="Group By"/>-->
-<!--                </xpath>-->
+                <!--                <search>-->
+                <!--                    <field name="resource_calendar_id"/>-->
+                <!--                    <group expand="0" string="Group By">-->
+                <!--                        <filter string="Working Schedule" name="resource_calendar_id"-->
+                <!--                                context="{'group_by': resource_calendar_id}"/>-->
+                <!--                    </group>-->
+                <!--                </search>-->
+                <xpath expr="//group" position="inside">
+                    <filter string="Working Schedule" name="group_resource_calendar_id"
+                            context="{'group_by': 'resource_calendar_id'}"/>
+                    <filter string="Date Start" name="date_start"
+                            context="{'group_by': 'date_start:day', 'group_by': 'date_start:week'}"/>
+
+                    <!--                    <field name="resource_calendar_id"/>-->
+                </xpath>
+                <!--                <xpath expr="//field[@name='resource_calendar_id']" position="after">-->
+
+                <!--                    <filter string="Working Schedule" name="resource_calendar_id"-->
+                <!--                            context="{'group_by': resource_calendar_id}"/>-->
+                <!--                </xpath>-->
             </field>
         </record>
         <record model="ir.ui.menu" id="hr_contract.hr_menu_contract">
