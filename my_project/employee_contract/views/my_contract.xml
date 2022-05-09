@@ -48,7 +48,9 @@
                     <filter string="Working Schedule" name="group_resource_calendar_id"
                             context="{'group_by': 'resource_calendar_id'}"/>
                     <filter string="Date Start" name="date_start"
-                            context="{'group_by': 'date_start:day', 'group_by': 'date_start:week'}"/>
+                            context="{'group_by': 'date_start'}"/>
+                    <filter string="Date End" name="date_end"
+                            context="{'group_by': 'date_end:day', 'group_by': 'date_end:week','group_by': 'date_end:month','group_by': 'date_end:quarter','group_by': 'date_end:year'}"/>
 
                     <!--                    <field name="resource_calendar_id"/>-->
                 </xpath>
