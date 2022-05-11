@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="my_work_form_view" model="ir.ui.view">
+            <field name="name">my.work.form.view</field>
+            <field name="model">my.work</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="employee_name"/>
+                    <field name="position_id"/>
+                    <field name="employee_name"/>
+                    <field name="department_id"/>
+                    <field name="date_start"/>
+                    <field name="reviewer"/>
+                    <field name="content"/>
+                    <field name="level_participant"/>
+                    <field name="level_finish"/>
+                    <field name="quality_review"/>
+                    <field name="note"/>
+                    <field name="manager_description"/>
+                    <field name="personal_review"/>
+                    <field name="manager_review"/>
+                    <field name="note_review"/>
+                    <field name="total_review"/>
+                    <field name="request_review"/>
+                    <field name="comment_review"/>
+
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

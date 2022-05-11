@@ -16,10 +16,11 @@
 
     'website': 'google.com.vn',
 
-    'depends': ['hr', 'hr_employee', 'hr_contract', 'base'],
+    'depends': ['hr', 'hr_contract', 'base'],
 
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
+        'views/my_vti.xml'
 
     ],
 
