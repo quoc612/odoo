@@ -6,7 +6,32 @@
             <field name="model">my.work</field>
             <field name="arch" type="xml">
                 <form>
+                    <field name="position_id" placeholder="a"/>
                     <field name="employee_name"/>
+                    <field name="department_id"/>
+                    <field name="date_start"/>
+                    <field name="reviewer"/>
+                    <field name="content"/>
+                    <field name="level_participant"/>
+                    <field name="level_finish"/>
+                    <field name="quality_review"/>
+                    <field name="note"/>
+                    <field name="manager_description"/>
+                    <field name="personal_review"/>
+                    <field name="manager_review"/>
+                    <field name="note_review"/>
+                    <!--                    <field name="total_review"/>-->
+                    <field name="request_review"/>
+                    <field name="comment_review"/>
+
+                </form>
+            </field>
+        </record>
+        <record id="my_work_form_tree" model="ir.ui.view">
+            <field name="name">my.work.form.view</field>
+            <field name="model">my.work</field>
+            <field name="arch" type="xml">
+                <tree>
                     <field name="position_id"/>
                     <field name="employee_name"/>
                     <field name="department_id"/>
@@ -21,12 +46,22 @@
                     <field name="personal_review"/>
                     <field name="manager_review"/>
                     <field name="note_review"/>
-                    <field name="total_review"/>
+<!--                    <field name="total_review"/>-->
                     <field name="request_review"/>
                     <field name="comment_review"/>
+                </tree>
 
-                </form>
             </field>
         </record>
+        <record id="action_vti" model="ir.actions.act_window">
+            <field name="name">VTI</field>
+            <!--            <field name="type">ir.actions.act_window</field>-->
+            <field name="res_model">my.work</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('my_work_form_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('my_work_form_view')})]"/>
+
+        </record>
+        <menuitem id="vti_menu" name="My VTI" action="action_vti"/>
     </data>
 </odoo>

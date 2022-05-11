@@ -8,7 +8,7 @@ class MyWork(models.Model):
     _inherit = "hr.employee"
     employee_name = fields.Many2many('hr.employee', string="Người được đánh giá")
     position_id = fields.Many2one('hr.employee', string='Chức vụ')
-    department_id = fields.Many2one('hr.employee', string='Phòng ban')
+    # department_id = fields.Many2one('hr', string='Phòng ban')
     date_start = fields.Date('Ngày bắt đầu thử việc tại công ty', required=True, default=fields.Date.today,
                              help="Start date of the contract.")
     reviewer = fields.Text(string='Người đánh giá')
