@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="book_borrow_form_view" model="ir.ui.view">
+            <field name="name">book.borrow.form.view</field>
+            <field name="model">book.borrow</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="name_of_leader"/>
+                            <field name="date_borrow_book"/>
+                            <field name="borrow_book_list"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="book_borrow_tree_view" model="ir.ui.view">
+            <field name="name">book.borrow.tree.view</field>
+            <field name="model">book.borrow</field>
+            <field name="arch" type="xml">
+                <tree string="Book Info" default_order="create_date desc">
+                    <field name="name"/>
+                    <field name="name_of_leader"/>
+                    <field name="date_borrow_book"/>
+                    <field name="borrow_book_list"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_my_book_borrow" model="ir.actions.act_window">
+            <field name="name">My Book Info</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">book.borrow</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('book_borrow_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('book_borrow_form_view')})]"/>
+        </record>
+
+        <menuitem id="menu_my_book_borrow"
+                  name="Borrow Book Info"
+                  action="action_my_book_borrow"
+                  sequence="10"
+                  groups="base.group_user"/>
+    </data>
+</odoo>
