@@ -5,12 +5,16 @@
             <field name="name">my.work.form.view</field>
             <field name="model">my.work</field>
             <field name="arch" type="xml">
-                <form>
-                    <field name="position_id" placeholder="a"/>
-                    <field name="employee_name"/>
-                    <field name="department_id"/>
-                    <field name="date_start"/>
-                    <field name="reviewer"/>
+                <h2 class="text-center">PHIẾU ĐÁNH GIÁ KẾT QUẢ CÔNG VIỆC</h2>
+                <p>Kỳ đánh giá:</p>
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="job_id"/>
+                        <field name="parent_id"/>
+                        <field name="date_start"/>
+                    </group>
+
                     <field name="content"/>
                     <field name="level_participant"/>
                     <field name="level_finish"/>
@@ -19,12 +23,14 @@
                     <field name="manager_description"/>
                     <field name="personal_review"/>
                     <field name="manager_review"/>
+                    <field name="personal_review"/>
                     <field name="note_review"/>
-                    <!--                    <field name="total_review"/>-->
+                    <field name="total_review"/>
                     <field name="request_review"/>
                     <field name="comment_review"/>
+                </group>
 
-                </form>
+
             </field>
         </record>
         <record id="my_work_form_tree" model="ir.ui.view">
@@ -32,11 +38,10 @@
             <field name="model">my.work</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="position_id"/>
-                    <field name="employee_name"/>
-                    <field name="department_id"/>
+                    <field name="name"/>
+                    <field name="job_id"/>
+                    <field name="parent_id"/>
                     <field name="date_start"/>
-                    <field name="reviewer"/>
                     <field name="content"/>
                     <field name="level_participant"/>
                     <field name="level_finish"/>
@@ -45,8 +50,9 @@
                     <field name="manager_description"/>
                     <field name="personal_review"/>
                     <field name="manager_review"/>
+                    <field name="personal_review"/>
                     <field name="note_review"/>
-<!--                    <field name="total_review"/>-->
+                    <field name="total_review"/>
                     <field name="request_review"/>
                     <field name="comment_review"/>
                 </tree>
@@ -55,7 +61,7 @@
         </record>
         <record id="action_vti" model="ir.actions.act_window">
             <field name="name">VTI</field>
-            <!--            <field name="type">ir.actions.act_window</field>-->
+            <field name="type">ir.actions.act_window</field>
             <field name="res_model">my.work</field>
             <field name="view_ids" eval="[(5, 0, 0),
                 (0, 0, {'view_mode': 'tree', 'view_id': ref('my_work_form_tree')}),
