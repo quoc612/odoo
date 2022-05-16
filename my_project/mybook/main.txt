@@ -1,0 +1,12 @@
+late_payment_book = fields.Date(string="Ngày trả sách")
+    # days_lates = fields.Float("Số tiền phải trả khi trả sách muộn")
+    #
+    # @api.onchange("late_payment_book")
+    # def checkLateDay(self):
+    #     if self.late_payment_book - datetime.date.today() < self.is_expried_of_book:
+    #         raise ValidationError("Không phải trả tiền sách")
+    #     # elif self.late_payment_book - datetime.date.today() < self.is_expried_of_book:
+    #     #     self.days_lates = se
+
+    access_my_book_borrow,access_my_book_borrow,model_my_book_borrow,base.group_user,1,1,1,1
+access_my_book_return,access_my_book_return,model_my_book_return,base.group_user,1,1,1,1
