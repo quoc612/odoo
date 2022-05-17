@@ -6,9 +6,17 @@
             <field name="model">book.borrow</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <button name="request_borrow_book" string="Send" type="object" class="oe_highlight"/>
+                        <field name="status_bar" widget="statusbar" statusbar_visible="draft,confirm,approved"/>
+                    </header>
                     <sheet>
                         <group>
+                            <field name="book_info_id"/>
                             <field name="name"/>
+                            <field name="name_of_book"/>
+                            <field name="is_expried_of_book"/>
+                            <field name="number_of_money"/>
                             <field name="name_of_leader"/>
                             <field name="date_borrow_book"/>
                             <field name="borrow_book_list"/>
@@ -23,7 +31,11 @@
             <field name="model">book.borrow</field>
             <field name="arch" type="xml">
                 <tree string="Book Info" default_order="create_date desc">
+                    <field name="book_info_id"/>
                     <field name="name"/>
+                    <field name="name_of_book"/>
+                    <field name="is_expried_of_book"/>
+                    <field name="number_of_money"/>
                     <field name="name_of_leader"/>
                     <field name="date_borrow_book"/>
                     <field name="borrow_book_list"/>

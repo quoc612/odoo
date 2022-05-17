@@ -17,6 +17,7 @@ class ReturnBook(models.Model):
         self.name = self.book_borrow_id.name
         self.name_of_leader = self.book_borrow_id.name_of_leader
         self.date_borrow_book = self.book_borrow_id.date_borrow_book
+        self.borrow_book_list = self.book_borrow_id.borrow_book_list
 
     # @api.onchange("total_late_book")
     # def total_late(self):
