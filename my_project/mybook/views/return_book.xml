@@ -11,7 +11,7 @@
                             <field name="book_borrow_id"/>
                             <field name="name"/>
                             <field name="name_of_leader"/>
-                            <field name="borrow_book_list"/>
+                            <field name="name_of_book"/>
                             <field name="date_borrow_book"/>
 
                         </group>
@@ -24,11 +24,11 @@
             <field name="name">book.return.tree.view</field>
             <field name="model">book.return</field>
             <field name="arch" type="xml">
-                <tree string="Book Return" default_order="create_date desc">
+                <tree string="Return Book" default_order="create_date desc">
                     <field name="book_borrow_id"/>
                     <field name="name"/>
                     <field name="name_of_leader"/>
-                    <field name="borrow_book_list"/>
+                    <field name="name_of_book"/>
                     <field name="date_borrow_book"/>
 
                 </tree>
@@ -36,7 +36,7 @@
         </record>
 
         <record id="action_my_book_return" model="ir.actions.act_window">
-            <field name="name">My Book Info</field>
+            <field name="name">Return Book</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">book.return</field>
             <field name="view_ids" eval="[(5, 0, 0),
@@ -45,7 +45,7 @@
         </record>
 
         <menuitem id="menu_my_book_return"
-                  name="Return Book Info"
+                  name="Return Book"
                   action="action_my_book_return"
                   sequence="10"
                   groups="base.group_user"/>
