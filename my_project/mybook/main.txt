@@ -10,3 +10,5 @@ late_payment_book = fields.Date(string="Ngày trả sách")
 
     access_my_book_borrow,access_my_book_borrow,model_my_book_borrow,base.group_user,1,1,1,1
 access_my_book_return,access_my_book_return,model_my_book_return,base.group_user,1,1,1,1
+access_book_borrow,access.book.borrow,model_book_borrow,group_student_id,1,0,0,0
+access_book_borrow,access.student.teacher,model_student_student,group_school_id,1,1,1,1
