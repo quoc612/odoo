@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="mail_borrow_accept" model="mail.template">
+            <field name="name">Email xác nhận mượn sách</field>
+            <field name="email_from">${object.email |safe}</field>
+            <field name="email_to">quoc.nguyenvan@vti.com.vn</field>
+            <field name="subject">Xác nhận thông tin mượn sách của ${object.name or 'n/a' }</field>
+            <field name="model_id" ref="model_book_borrow"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html">
+                <![CDATA[
+                <p>Hi ${object.name}</p>
+                <p>
+                   Quyển sách ${object.name_of_book} đã được mượn thành công
+                </p>
+                 <br/>
+                 ]]>
+            </field>
+        </record>
+    </data>
+</odoo>

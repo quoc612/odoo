@@ -1,0 +1,20 @@
+<odoo>
+   <data>
+       <record id="mail_template_manager_tra" model="mail.template">
+           <field name="name">Email Template</field>
+           <field name="model_id" ref="library.model_tra_sach"/>
+           <field name="email_from">phuoc.vuhong@vti.com.vn</field>
+           <field name="email_to" >${object.mail}</field>
+           <field name="subject">Thông tin xác nhận cho ${object.name.name or 'n/a' }</field>
+           <field name="auto_delete" eval="True"/>
+           <field name="body_html"><![CDATA[
+                <p>Hi ${object.name.name},</p>
+                <br/>
+                <p>Yêu cầu trả sách đã được duyệt.</p>
+                Regards,
+                <br/>
+                 ]]>
+           </field>
+       </record>
+   </data>
+</odoo>
