@@ -22,6 +22,8 @@
                             <field name="name_of_book"/>
                             <field name="name_of_leader"/>
                             <field name="date_borrow_book"/>
+                            <field name="is_expried_of_book"/>
+                            <field name="date_return_expried"/>
                         </group>
                     </sheet>
                 </form>
@@ -38,6 +40,8 @@
                     <field name="name_of_book"/>
                     <field name="name_of_leader"/>
                     <field name="date_borrow_book"/>
+                    <field name="date_return_expried"/>
+                    <field name="is_expried_of_book"/>
                 </tree>
             </field>
         </record>
