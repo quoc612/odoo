@@ -9,15 +9,25 @@ class BorrowBook(models.Model):
     name_of_book = fields.Char(string="Các cuốn sách mượn")
     name_of_leader = fields.Char(string="Người quản lý")
     date_borrow_book = fields.Date(string="Ngày mượn sách")
-    status_bar = fields.Selection([('draft', 'Draft'),
-                                   ('confirm', 'Waiting Confirm'),
-                                   ('approved', 'Approved')], string='Status', default='draft', index=True)
+    email = fields.Char(string="Email")
+    state = fields.Selection([('draft', 'Draft'),
+                              ('confirm', 'Waiting Confirm'),
+                              ('approved', 'Approved')], string='Status', default='draft', index=True)
 
     @api.onchange("book_info_id")
     def check_borrow_book(self):
         self.name_of_book = self.book_info_id.name_of_book
 
-    @api.multi
-    def request_borrow_book(self):
-        if self.status_bar == "draft":
-            self.write({'status_bar': 'confirm'})
+    @api.one
+    def started_progressbar(self):
+        if self.state == "draft":
+            self.write({'state': 'confirm'})
+            mail_template = self.env.ref('mybook.mail_templates')
+            mail_template.send_mail(self.id, force_send=True)
+
+    @api.one
+    def confirm_progressbar(self):
+        if self.state == "confirm":
+            self.write({'state': 'approved'})
+            mail_template = self.env.ref('mybook.mail_borrow_accept')
+            mail_template.send_mail(self.id, force_send=True)

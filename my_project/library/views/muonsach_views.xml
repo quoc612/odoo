@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="muon_sach_form_view" model="ir.ui.view">
+            <field name="name">muon.sach.form.view</field>
+            <field name="model">muon.sach</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+<!--                        <button string="Set to concept" type="object" name="concept_progressbar" attrs="{'invisible': [('state', '=', 'concept')]}"/>-->
+                        <button string="Request" type="object" name="started_progressbar" class="oe_highlight" attrs="{'invisible': [('state','=','request')]}"/>
+                        <button string="Approving" type="object" name="progress_progressbar" attrs="{'invisible': [('state','=','approving')]}"/>
+                        <button string="Done" type="object" name="dones_progressbar"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="quanly"/>
+                            <field name="ngaymuon"/>
+                            <field name="sachmuon"/>
+                            <field name="mail"/>
+                            <field name="hantra"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="muon_sach_tree_view" model="ir.ui.view">
+            <field name="name">muon.sach.tree.view</field>
+            <field name="model">muon.sach</field>
+            <field name="arch" type="xml">
+                <tree string="Muon Sach" >
+                    <field name="name"/>
+                    <field name="quanly"/>
+                    <field name="ngaymuon"/>
+                    <field name="sachmuon"/>
+                    <field name="mail"/>
+                    <field name="hantra"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_muon_sach" model="ir.actions.act_window">
+            <field name="name">Muon Sach</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">muon.sach</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create The First
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>
