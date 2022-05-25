@@ -42,7 +42,7 @@ class ReturnBook(models.Model):
             if r.date_return_expried and r.date_borrow_book:
                 d1 = datetime.strptime(str(r.date_return_expried), '%Y-%m-%d')
                 d2 = datetime.strptime(str(r.date_borrow_book), '%Y-%m-%d')
-                d3 = d2 - d1
+                d3 = d1 - d2
                 r.total_days = str(d3.days)
 
     @api.depends('number_of_money', 'total_days')
@@ -55,12 +55,12 @@ class ReturnBook(models.Model):
     def started_progressbar(self):
         if self.state == "draft":
             self.write({'state': 'confirm'})
-            # mail_template = self.env.ref('mybook.mail_templates')
-            # mail_template.send_mail(self.id, force_send=True)
+            mail_template = self.env.ref('mybook.mail_book_return')
+            mail_template.send_mail(self.id, force_send=True)
 
     @api.one
     def confirm_progressbar(self):
         if self.state == "confirm":
             self.write({'state': 'approved'})
-            # mail_template = self.env.ref('mybook.mail_borrow_accept')
-            # mail_template.send_mail(self.id, force_send=True)
+            mail_template = self.env.ref('mybook.mail_book_return_accept')
+            mail_template.send_mail(self.id, force_send=True)

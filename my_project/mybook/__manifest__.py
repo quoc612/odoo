@@ -8,6 +8,8 @@
     'data': [
         'data/mail_template.xml',
         'data/mail_borrow_accept.xml',
+        'data/mail_book_return.xml',
+        'data/mail_book_return_accept.xml',
         'security/security_main.xml',
         'security/ir.model.access.csv',
         'views/return_book.xml',
