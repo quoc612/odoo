@@ -2,6 +2,7 @@ from dateutil.relativedelta import relativedelta
 
 from odoo import fields, api, models
 from odoo.exceptions import ValidationError
+from datetime import datetime
 
 
 class BorrowBook(models.Model):
@@ -21,12 +22,10 @@ class BorrowBook(models.Model):
 
     @api.onchange("book_info_id")
     def check_borrow_book(self):
-        self.name_of_book = self.book_info_id.id
-
-    @api.onchange("book_info_id")
-    def check_borrow_book(self):
+        self.name_of_book = self.book_info_id.name_of_book
         self.is_expried_of_book = self.book_info_id.is_expried_of_book
-    @api.depends("date_borrow_book",'is_expried_of_book')
+
+    @api.depends("date_borrow_book", 'is_expried_of_book')
     def _compute_deadline(self):
         for re in self:
             if re.date_borrow_book and re.is_expried_of_book:
