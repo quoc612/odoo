@@ -9,12 +9,13 @@ class BorrowBook(models.Model):
     _name = "book.borrow"
     _inherit = "book.info"
     book_info_id = fields.Many2one('book.info', string="Book Info ID")
-    name = fields.Char(string="Tên sinh viên")
+    name = fields.Many2one('hr.employee', string="Tên sinh viên")
     name_of_book = fields.Char(string="Các cuốn sách mượn")
-    name_of_leader = fields.Char(string="Người quản lý")
-    date_borrow_book = fields.Date(string="Ngày mượn sách")
-    is_expried_of_book = fields.Char(string='Thời hạn trả sách')
-    date_return_expried = fields.Date(string="Hạn trả", compute='_compute_deadline')
+    name_of_leader = fields.Many2one('hr.employee', string="Người quản lý")
+    date_borrow_book = fields.Date(string="Ngày mượn sách", )
+    is_expried_of_book = fields.Integer(string='Thời hạn trả sách')
+    date_return_expried = fields.Date(string="Hạn trả", compute='compute_deadline')
+    number_of_money = fields.Integer(string='Hệ số trả mượn')
     email = fields.Char(string="Email")
     state = fields.Selection([('draft', 'Draft'),
                               ('confirm', 'Waiting Confirm'),
@@ -24,9 +25,10 @@ class BorrowBook(models.Model):
     def check_borrow_book(self):
         self.name_of_book = self.book_info_id.name_of_book
         self.is_expried_of_book = self.book_info_id.is_expried_of_book
+        self.number_of_money = self.book_info_id.number_of_money
 
     @api.depends("date_borrow_book", 'is_expried_of_book')
-    def _compute_deadline(self):
+    def compute_deadline(self):
         for re in self:
             if re.date_borrow_book and re.is_expried_of_book:
                 re.date_return_expried = re.date_borrow_book + relativedelta(months=re.book_info_id.is_expried_of_book)

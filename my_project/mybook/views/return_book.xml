@@ -6,6 +6,15 @@
             <field name="model">book.return</field>
             <field name="arch" type="xml">
                 <form>
+                    <header>
+                        <button name="started_progressbar" string="Submit"
+                                attrs="{'invisible': [('state','!=','draft')]}" groups="mybook.group_user"
+                                type="object" class="oe_highlight"/>
+                        <button name="confirm_progressbar" string="Confirm"
+                                attrs="{'invisible': [('state','!=','confirm')]}" groups="mybook.group_manager"
+                                type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,approved"/>
+                    </header>
                     <sheet>
                         <group>
                             <field name="book_borrow_id"/>
@@ -13,7 +22,10 @@
                             <field name="name_of_leader"/>
                             <field name="name_of_book"/>
                             <field name="date_borrow_book"/>
-
+                            <field name="number_of_money"/>
+                            <field name="date_return_expried"/>
+                            <field name="total_days"/>
+                            <field name="total_price"/>
                         </group>
                     </sheet>
                 </form>
@@ -30,7 +42,8 @@
                     <field name="name_of_leader"/>
                     <field name="name_of_book"/>
                     <field name="date_borrow_book"/>
-
+                     <field name="number_of_money"/>
+                    <field name="date_return_expried"/>
                 </tree>
             </field>
         </record>
