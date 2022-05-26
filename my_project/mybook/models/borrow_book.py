@@ -46,3 +46,10 @@ class BorrowBook(models.Model):
             self.write({'state': 'approved'})
             mail_template = self.env.ref('mybook.mail_borrow_accept')
             mail_template.send_mail(self.id, force_send=True)
+
+    @api.constrains('name_of_book')
+    def _check_name(self):
+        partner_rec = self.env['book.borrow'].search(
+            [('name_of_book', '=', self.name_of_book), ('id', '!=', self.id)])
+        if partner_rec:
+            raise ValidationError('! Sách này đã được mượn, vui lòng chọn quyển khác !')

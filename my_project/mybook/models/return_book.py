@@ -64,3 +64,10 @@ class ReturnBook(models.Model):
             self.write({'state': 'approved'})
             mail_template = self.env.ref('mybook.mail_book_return_accept')
             mail_template.send_mail(self.id, force_send=True)
+
+    @api.constrains('name_of_book')
+    def _check_name(self):
+        partner_rec = self.env['book.return'].search(
+            [('name_of_book', '=', self.name_of_book), ('id', '!=', self.id)])
+        if partner_rec:
+            raise ValidationError('! Sách này chưa được trả, vui lòng lựa chọn khác !')
