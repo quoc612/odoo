@@ -33,9 +33,6 @@ class ReturnBook(models.Model):
         self.date_return_expried = self.book_borrow_id.date_return_expried
         self.number_of_money = self.book_borrow_id.number_of_money
 
-    #     self.date_return_expried = self.book_borrow_id.date_return_expried
-    #
-    # @api.onchange('date_borrow_book','date_return_expried','total_late_book')
     @api.depends('date_return_expried', 'date_borrow_book', 'total_days')
     def computee_date(self):
         for r in self:

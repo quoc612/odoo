@@ -17,14 +17,20 @@
                     </header>
                     <sheet>
                         <group>
-                            <field name="book_info_id"/>
-                            <field name="name"/>
-                            <field name="name_of_book"/>
-                            <field name="name_of_leader"/>
-                            <field name="date_borrow_book"/>
-                            <field name="is_expried_of_book"/>
-                            <field name="number_of_money"/>
-                            <field name="date_return_expried"/>
+                            <group>
+                                <field name="book_info_id"/>
+                                <field name="name"/>
+                                <field name="name_of_book"/>
+                            </group>
+                            <group>
+                                <field name="name_of_leader"/>
+                                <field name="date_borrow_book"/>
+                                <field name="is_expried_of_book"/>
+                                <field name="number_of_money"/>
+                                <field name="date_return_expried"/>
+                            </group>
+
+
                         </group>
                     </sheet>
                 </form>
