@@ -7,7 +7,7 @@ from datetime import datetime
 
 class BorrowBook(models.Model):
     _name = "book.borrow"
-    _inherit = "book.info"
+    _inherit = ['book.info', 'mail.thread']
     book_info_id = fields.Many2one('book.info', string="Book Info ID")
     name = fields.Many2one('hr.employee', string="Tên sinh viên")
     name_of_book = fields.Char(string="Các cuốn sách mượn")
